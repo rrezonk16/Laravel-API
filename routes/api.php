@@ -24,13 +24,13 @@ Route::delete('/delete-item/{slug}', [ProductController::class, 'destroy']);
 Route::put('/update-products/{slug}', [ProductController::class, 'update']);
 Route::post('/add-product', [ProductController::class, 'store']);
 Route::put('/orders/status/{orderId}', [OrderController::class, 'updateStatus']);
-
-
-Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/my-orders/{userId}', [OrderController::class, 'getMyOrders'])->name('my-orders');
     Route::post('/user/edit', [UserController::class, 'edit']);
     Route::get('/user/data', [UserController::class, 'getUserData']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
 
 });
 
